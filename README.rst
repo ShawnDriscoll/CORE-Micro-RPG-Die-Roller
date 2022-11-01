@@ -2,7 +2,7 @@
 **CORE Micro Dieroller**
 ========================
 
-.. figure:: coremicro_app_art.png
+.. figure:: images/coremicro_app_art.png
 
 
 **CORE Micro Dieroller** is a Windows program for calculating die rolls for CORE Micro RPG v3.0.
