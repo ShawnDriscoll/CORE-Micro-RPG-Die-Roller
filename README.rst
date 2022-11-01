@@ -27,20 +27,12 @@ Requirements
 
 * **Python 3.9**
    
-  **PyTravCalc** was written using the C implementation of Python
+  **CORE Micro Dieroller** was written using the C implementation of Python
   version 3.9. Also known as CPython.
    
 * **PyQt5 5.15.4**
 
   PyQt5 is the framework used for displaying the Window GUI and buttons, etc.
-
-* **numpy 1.20.2**
-
-  For building arrays.
-
-* **matplotlib 3.4.2**
-
-  For graphics plotting.
    
 
 Warning
