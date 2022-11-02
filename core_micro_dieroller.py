@@ -99,9 +99,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.input1dice.valueChanged.connect(self.input1dice_valueChanged)
         self.dice1box = True
         self.input1dice.setDisabled(self.dice1box)
-        self.input1level.valueChanged.connect(self.input1level_valueChanged)
+        self.input1skill.valueChanged.connect(self.input1skill_valueChanged)
         self.level1box = True
-        self.input1level.setDisabled(self.level1box)
+        self.input1skill.setDisabled(self.level1box)
         self.input1DM.valueChanged.connect(self.input1DM_valueChanged)
         self.DM1box = True
         self.input1DM.setDisabled(self.DM1box)
@@ -112,9 +112,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.input2dice.valueChanged.connect(self.input2dice_valueChanged)
         self.dice2box = True
         self.input2dice.setDisabled(self.dice2box)
-        self.input2level.valueChanged.connect(self.input2level_valueChanged)
+        self.input2skill.valueChanged.connect(self.input2skill_valueChanged)
         self.level2box = True
-        self.input2level.setDisabled(self.level2box)
+        self.input2skill.setDisabled(self.level2box)
         self.input2DM.valueChanged.connect(self.input2DM_valueChanged)
         self.DM2box = True
         self.input2DM.setDisabled(self.DM2box)
@@ -159,9 +159,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Set difficulty to not chosen yet
         self.target_num = 0
-
-        self.total1_rolled = 0
-        self.roll1_prompt = 0
 
         # Set the About menu item
         self.popAboutDialog=aboutDialog()
@@ -273,120 +270,122 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.pushingit2box = False
             self.rollbox = False
         self.input1dice.setDisabled(self.dice1box)
-        self.input1level.setDisabled(self.level1box)
+        self.input1skill.setDisabled(self.level1box)
         self.input1DM.setDisabled(self.DM1box)
         self.selPushingit1.setDisabled(self.pushingit1box)
         self.input1dice.setValue(1)
-        self.input1level.setValue(0)
+        self.input1skill.setValue(0)
         self.input1DM.setValue(0)
         self.selPushingit1.setChecked(False)
         self.roll1result.setText('')
+        self.prompt1.setText('')
         self.input2dice.setDisabled(self.dice2box)
-        self.input2level.setDisabled(self.level2box)
+        self.input2skill.setDisabled(self.level2box)
         self.input2DM.setDisabled(self.DM2box)
         self.selPushingit2.setDisabled(self.pushingit2box)
         self.input2dice.setValue(1)
-        self.input2level.setValue(0)
+        self.input2skill.setValue(0)
         self.input2DM.setValue(0)
         self.selPushingit2.setChecked(False)
         self.roll2result.setText('')
+        self.prompt2.setText('')
         self.rollButton.setDisabled(self.rollbox)
-
-        # Reset the screen
-        self.prompt1.setText('')
-        self.roll1_prompt = 0
 
     def input1dice_valueChanged(self):
         '''
         Number of dice was entered.
         '''
-        if self.pushingit1:
-            self.total1DM.setText(str(self.input1level.value() + self.input1DM.value() + 1))
-        else:
-            self.total1DM.setText(str(self.input1level.value() + self.input1DM.value()))
         
         # reset the screen
+        self.input1skill.setValue(0)
+        self.input1DM.setValue(0)
+        self.roll1result.setText('')
         self.prompt1.setText('')
-        self.roll1_prompt = 0
         self.selPushingit1.setChecked(False)
     
     def input2dice_valueChanged(self):
         '''
         Number of dice was entered (defending).
         '''
-        if self.pushingit2:
-            self.total2DM.setText(str(self.input2level.value() + self.input2DM.value() + 1))
-        else:
-            self.total2DM.setText(str(self.input2level.value() + self.input2DM.value()))
         
         # reset the screen
+        self.input2skill.setValue(0)
+        self.input2DM.setValue(0)
+        self.roll2result.setText('')
         self.prompt2.setText('')
-        self.roll2_prompt = 0
         self.selPushingit2.setChecked(False)
     
-    def input1level_valueChanged(self):
+    def input1skill_valueChanged(self):
         '''
         A skill level was entered.
         Add it to the DM total.
         '''
-        if self.pushingit1:
-            self.total1DM.setText(str(self.input1level.value() + self.input1DM.value() + 1))
-        else:
-            self.total1DM.setText(str(self.input1level.value() + self.input1DM.value()))
         
         # reset the screen
-        self.prompt1.setText('')
-        self.roll1_prompt = 0
+        self.input1DM.setValue(0)
         self.selPushingit1.setChecked(False)
-        log.debug('Skill level set at: %d' % self.input1level.value())
+        if self.pushingit1:
+            self.total1DM.setText(str(self.input1skill.value() + self.input1DM.value() + 1))
+        else:
+            self.total1DM.setText(str(self.input1skill.value() + self.input1DM.value()))
+        self.roll1result.setText('')
+        self.prompt1.setText('')
+        self.roll2result.setText('')
+        self.prompt2.setText('')
+        log.debug('Skill level set at: %d' % self.input1skill.value())
     
-    def input2level_valueChanged(self):
+    def input2skill_valueChanged(self):
         '''
         A skill level was entered (defending).
         Add it to the DM total.
         '''
-        if self.pushingit2:
-            self.total2DM.setText(str(self.input2level.value() + self.input2DM.value() + 1))
-        else:
-            self.total2DM.setText(str(self.input2level.value() + self.input2DM.value()))
         
         # reset the screen
-        self.prompt2.setText('')
-        self.roll2_prompt = 0
+        self.input2DM.setValue(0)
         self.selPushingit2.setChecked(False)
-        log.debug('Defending Skill level set at: %d' % self.input2level.value())
+        if self.pushingit2:
+            self.total2DM.setText(str(self.input2skill.value() + self.input2DM.value() + 1))
+        else:
+            self.total2DM.setText(str(self.input2skill.value() + self.input2DM.value()))
+        self.roll1result.setText('')
+        self.prompt1.setText('')
+        self.roll2result.setText('')
+        self.prompt2.setText('')
+        log.debug('Defending Skill level set at: %d' % self.input2skill.value())
         
     def input1DM_valueChanged(self):
         '''
         A DM was entered.
         Add it to the DM total.
         '''
-        if self.pushingit1:
-            self.total1DM.setText(str(self.input1level.value() + self.input1DM.value() + 1))
-        else:
-            self.total1DM.setText(str(self.input1level.value() + self.input1DM.value()))
         
         # reset the screen
         self.roll1result.setText('')
         self.prompt1.setText('')
-        self.roll1_prompt = 0
+        self.roll2result.setText('')
+        self.prompt2.setText('')
         self.selPushingit1.setChecked(False)
+        if self.pushingit1:
+            self.total1DM.setText(str(self.input1skill.value() + self.input1DM.value() + 1))
+        else:
+            self.total1DM.setText(str(self.input1skill.value() + self.input1DM.value()))
     
     def input2DM_valueChanged(self):
         '''
         A DM was entered (defending).
         Add it to the DM total.
         '''
-        if self.pushingit2:
-            self.total2DM.setText(str(self.input2level.value() + self.input2DM.value() + 1))
-        else:
-            self.total2DM.setText(str(self.input2level.value() + self.input2DM.value()))
         
         # reset the screen
+        self.roll1result.setText('')
+        self.prompt1.setText('')
         self.roll2result.setText('')
         self.prompt2.setText('')
-        self.roll1_prompt = 0
         self.selPushingit2.setChecked(False)
+        if self.pushingit2:
+            self.total2DM.setText(str(self.input2skill.value() + self.input2DM.value() + 1))
+        else:
+            self.total2DM.setText(str(self.input2skill.value() + self.input2DM.value()))
         
     def selPushingit1_valueChanged(self):
         '''
@@ -395,13 +394,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         '''
         self.pushingit1 = self.selPushingit1.isChecked()
         if self.pushingit1:
-            self.total1DM.setText(str(self.input1level.value() + self.input1DM.value() + 1))
+            self.total1DM.setText(str(self.input1skill.value() + self.input1DM.value() + 1))
         else:
-            self.total1DM.setText(str(self.input1level.value() + self.input1DM.value()))
+            self.total1DM.setText(str(self.input1skill.value() + self.input1DM.value()))
 
         # reset the screen
+        self.roll1result.setText('')
         self.prompt1.setText('')
-        self.roll1_prompt = 0
+        self.roll2result.setText('')
+        self.prompt2.setText('')
     
     def selPushingit2_valueChanged(self):
         '''
@@ -410,13 +411,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         '''
         self.pushingit2 = self.selPushingit2.isChecked()
         if self.pushingit2:
-            self.total2DM.setText(str(self.input2level.value() + self.input2DM.value() + 1))
+            self.total2DM.setText(str(self.input2skill.value() + self.input2DM.value() + 1))
         else:
-            self.total2DM.setText(str(self.input2level.value() + self.input2DM.value()))
+            self.total2DM.setText(str(self.input2skill.value() + self.input2DM.value()))
 
         # reset the screen
+        self.roll1result.setText('')
+        self.prompt1.setText('')
+        self.roll2result.setText('')
         self.prompt2.setText('')
-        self.roll2_prompt = 0
         
     def rollButtonClicked(self):
         '''
@@ -426,9 +429,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.action1_roll = roll(self.roll1_type)
         log.debug('Action roll %s: %d' % (self.roll1_type, self.action1_roll))
         if self.pushingit1:
-            self.total1_rolled = self.action1_roll + self.input1level.value() + self.input1DM.value() + 1
+            self.total1_rolled = self.action1_roll + self.input1skill.value() + self.input1DM.value() + 1
         else:
-            self.total1_rolled = self.action1_roll + self.input1level.value() + self.input1DM.value()
+            self.total1_rolled = self.action1_roll + self.input1skill.value() + self.input1DM.value()
         self.roll1result.setText(str(self.total1_rolled))
         if self.target_num >= 1 and self.target_num <= 10:
             self.roll1_prompt = self.total1_rolled - self.target_num
@@ -469,9 +472,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.action2_roll = roll(self.roll2_type)
             log.debug('Defending Roll being made %s: %d' % (self.roll2_type, self.action2_roll))
             if self.pushingit2:
-                self.total2_rolled = self.action2_roll + self.input2level.value() + self.input2DM.value() + 1
+                self.total2_rolled = self.action2_roll + self.input2skill.value() + self.input2DM.value() + 1
             else:
-                self.total2_rolled = self.action2_roll + self.input2level.value() + self.input2DM.value()
+                self.total2_rolled = self.action2_roll + self.input2skill.value() + self.input2DM.value()
             self.roll2result.setText(str(self.total2_rolled))
             self.prompt2.setText('DL %d' % self.total2_rolled)
             # ...becomes DL for Active Roll to beat
@@ -497,12 +500,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.target_num = 0
         self.selDiff.setCurrentIndex(self.target_num)
         self.unknown = False
-        self.input1dice.setValue(1)
-        self.input1level.setValue(0)
-        self.input1DM.setValue(0)
-        self.roll1result.setText('')
-        self.prompt1.setText('')
-        self.roll1_prompt = 0
+        # self.input1dice.setValue(1)
+        # self.input1skill.setValue(0)
+        # self.input1DM.setValue(0)
+        # self.roll1result.setText('')
+        # self.prompt1.setText('')
+        #self.roll1_prompt = 0
         self.rollInput.clear()
         self.rollBrowser.clear()
 
