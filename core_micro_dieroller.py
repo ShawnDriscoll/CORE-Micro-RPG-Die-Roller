@@ -222,11 +222,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         elif self.selDiff.currentIndex() == 13:
             self.unknown = False
             self.target_num = 13
-            log.debug('Gradiated roll has been asked for')
+            log.debug('Gradiated Roll has been asked for')
         elif self.selDiff.currentIndex() == 14:
             self.unknown = False
             self.target_num = 14
-            log.debug('Opposed roll has been asked for')
+            log.debug('Opposed Roll has been asked for')
         
         # Reset the buttons whenever a Difficulty Level has been chosen
         if self.target_num == 0:
@@ -427,7 +427,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         '''
         self.roll1_type = str(self.input1dice.value()) + 'd6h1'
         self.action1_roll = roll(self.roll1_type)
-        log.debug('Action roll %s: %d' % (self.roll1_type, self.action1_roll))
+        log.debug('Action Roll %s: %d' % (self.roll1_type, self.action1_roll))
         if self.pushingit1:
             self.total1_rolled = self.action1_roll + self.input1skill.value() + self.input1DM.value() + 1
         else:
