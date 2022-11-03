@@ -1,11 +1,11 @@
 #
-#   CORE Micro DieRoller 0.0.1 Beta
+#   CORE Micro DieRoller 0.1.0 Beta
 #   Written for Python 3.9
 #
 ###################################
 
 """
-CORE Micro DieRoller 0.0.1 Beta
+CORE Micro DieRoller 0.1.0 Beta
 -------------------------------
 
 This program rolls 6-sided dice and calculates their results.
@@ -28,8 +28,8 @@ import os
 import logging
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__app__ = 'CORE Micro DieRoller 0.0.1 Beta'
-__version__ = '0.0.1b'
+__app__ = 'CORE Micro DieRoller 0.1.0 Beta'
+__version__ = '0.1.0b'
 __py_version__ = '3.9.13'
 __expired_tag__ = False
 
@@ -279,6 +279,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.selPushingit1.setChecked(False)
         self.roll1result.setText('')
         self.prompt1.setText('')
+        self.harm1.setText('')
         self.input2dice.setDisabled(self.dice2box)
         self.input2skill.setDisabled(self.level2box)
         self.input2DM.setDisabled(self.DM2box)
@@ -289,6 +290,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.selPushingit2.setChecked(False)
         self.roll2result.setText('')
         self.prompt2.setText('')
+        self.harm2.setText('')
         self.rollButton.setDisabled(self.rollbox)
 
     def input1dice_valueChanged(self):
@@ -301,6 +303,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.input1DM.setValue(0)
         self.roll1result.setText('')
         self.prompt1.setText('')
+        self.harm1.setText('')
         self.selPushingit1.setChecked(False)
     
     def input2dice_valueChanged(self):
@@ -313,6 +316,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.input2DM.setValue(0)
         self.roll2result.setText('')
         self.prompt2.setText('')
+        self.harm2.setText('')
         self.selPushingit2.setChecked(False)
     
     def input1skill_valueChanged(self):
@@ -330,8 +334,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.total1DM.setText(str(self.input1skill.value() + self.input1DM.value()))
         self.roll1result.setText('')
         self.prompt1.setText('')
+        self.harm1.setText('')
         self.roll2result.setText('')
         self.prompt2.setText('')
+        self.harm2.setText('')
         log.debug('Skill level set at: %d' % self.input1skill.value())
     
     def input2skill_valueChanged(self):
@@ -349,8 +355,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.total2DM.setText(str(self.input2skill.value() + self.input2DM.value()))
         self.roll1result.setText('')
         self.prompt1.setText('')
+        self.harm1.setText('')
         self.roll2result.setText('')
         self.prompt2.setText('')
+        self.harm2.setText('')
         log.debug('Defending Skill level set at: %d' % self.input2skill.value())
         
     def input1DM_valueChanged(self):
@@ -362,8 +370,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # reset the screen
         self.roll1result.setText('')
         self.prompt1.setText('')
+        self.harm1.setText('')
         self.roll2result.setText('')
         self.prompt2.setText('')
+        self.harm2.setText('')
         self.selPushingit1.setChecked(False)
         if self.pushingit1:
             self.total1DM.setText(str(self.input1skill.value() + self.input1DM.value() + 1))
@@ -379,8 +389,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # reset the screen
         self.roll1result.setText('')
         self.prompt1.setText('')
+        self.harm1.setText('')
         self.roll2result.setText('')
         self.prompt2.setText('')
+        self.harm2.setText('')
         self.selPushingit2.setChecked(False)
         if self.pushingit2:
             self.total2DM.setText(str(self.input2skill.value() + self.input2DM.value() + 1))
@@ -401,8 +413,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # reset the screen
         self.roll1result.setText('')
         self.prompt1.setText('')
+        self.harm1.setText('')
         self.roll2result.setText('')
         self.prompt2.setText('')
+        self.harm2.setText('')
     
     def selPushingit2_valueChanged(self):
         '''
@@ -418,8 +432,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # reset the screen
         self.roll1result.setText('')
         self.prompt1.setText('')
+        self.harm1.setText('')
         self.roll2result.setText('')
         self.prompt2.setText('')
+        self.harm2.setText('')
         
     def rollButtonClicked(self):
         '''
@@ -446,6 +462,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             if self.roll1_prompt >= 2:
                 self.prompt1index = 4
             self.prompt1.setText('%d: %s' % (self.roll1_prompt, self.prompts[self.prompt1index]))
+            if self.pushingit1:
+                temp = 'Harm 1'
+                if self.prompts[self.prompt1index][0:6] == 'NO AND':
+                    temp += ', incapacited for ' + str(roll('1d6')) + ' minutes'
+                self.harm1.setText(temp)
         elif self.target_num == 13:
             self.roll1_prompt = self.total1_rolled
             if self.roll1_prompt > 11:
@@ -466,6 +487,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.prompt1.setText('')
             else:
                 self.prompt1.setText(self.dls[self.roll1_gradiated])
+            if self.pushingit1:
+                temp = 'Harm 1'
+                self.harm1.setText(temp)
         elif self.target_num == 14:
             # Defending Roll...
             self.roll2_type = str(self.input2dice.value()) + 'd6h1'
@@ -491,7 +515,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             if self.roll1_prompt >= 2:
                 self.prompt1index = 4
             self.prompt1.setText('%d: %s' % (self.roll1_prompt, self.prompts[self.prompt1index]))
-            
+            if self.pushingit1:
+                temp = 'Harm 1'
+                if self.prompts[self.prompt1index][0:6] == 'NO AND':
+                    temp += ', incapacited for ' + str(roll('1d6')) + ' minutes'
+                self.harm1.setText(temp)
+            if self.pushingit2:
+                temp = 'Harm 1'
+                self.harm2.setText(temp)
+
     def clearall_buttonClicked(self):
         '''
         Clear all the fields
@@ -500,12 +532,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.target_num = 0
         self.selDiff.setCurrentIndex(self.target_num)
         self.unknown = False
-        # self.input1dice.setValue(1)
-        # self.input1skill.setValue(0)
-        # self.input1DM.setValue(0)
-        # self.roll1result.setText('')
-        # self.prompt1.setText('')
-        #self.roll1_prompt = 0
         self.rollInput.clear()
         self.rollBrowser.clear()
 

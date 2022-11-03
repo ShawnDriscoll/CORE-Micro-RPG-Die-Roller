@@ -14,10 +14,10 @@ Notes
 **CORE Micro Dieroller** is being tested on Windows 10.
 
 
-What's New in 0.0.1?
+What's New in 0.1.0?
 --------------------
 
-**Gradiated** dice rolls can be made.
+**Pushing It** causes harm.
 
 
 Requirements
@@ -67,6 +67,10 @@ Things To-Do
 |se|
 
 **Known History**
+
+* v0.0.1b
+
+  **Gradiated** dice rolls can be made.
 
 * v0.0.0b
 
