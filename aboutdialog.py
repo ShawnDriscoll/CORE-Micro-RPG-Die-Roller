@@ -23,10 +23,10 @@ class Ui_aboutDialog(object):
         self.bgArtLabel = QtWidgets.QLabel(aboutDialog)
         self.bgArtLabel.setGeometry(QtCore.QRect(0, 0, 481, 301))
         self.bgArtLabel.setText("")
-        self.bgArtLabel.setPixmap(QtGui.QPixmap(":/images/sc_dialog.png"))
+        self.bgArtLabel.setPixmap(QtGui.QPixmap(":/images/core_micro_dialog.png"))
         self.bgArtLabel.setObjectName("bgArtLabel")
         self.textLabel = QtWidgets.QLabel(aboutDialog)
-        self.textLabel.setGeometry(QtCore.QRect(80, 20, 321, 261))
+        self.textLabel.setGeometry(QtCore.QRect(140, 20, 321, 261))
         self.textLabel.setTextFormat(QtCore.Qt.RichText)
         self.textLabel.setScaledContents(False)
         self.textLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
@@ -34,7 +34,7 @@ class Ui_aboutDialog(object):
         self.textLabel.setOpenExternalLinks(True)
         self.textLabel.setObjectName("textLabel")
         self.line = QtWidgets.QFrame(aboutDialog)
-        self.line.setGeometry(QtCore.QRect(80, 210, 321, 20))
+        self.line.setGeometry(QtCore.QRect(140, 210, 321, 20))
         self.line.setLineWidth(1)
         self.line.setMidLineWidth(0)
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
@@ -48,5 +48,5 @@ class Ui_aboutDialog(object):
         _translate = QtCore.QCoreApplication.translate
         aboutDialog.setWindowTitle(_translate("aboutDialog", "About CORE Micro"))
         self.aboutOKButton.setText(_translate("aboutDialog", "OK"))
-        self.textLabel.setText(_translate("aboutDialog", "<html><head/><body><p><span style=\" font-weight:600;\">Die Roller for Windows 10</span></p><p>Version: CORE Micro RPG v3.0</p><p>Build: 0.1.0 (Beta)</p><p>Produced by Shawn Driscoll. Copyright (C) 2022.</p><p>Get the latest manual at <a href=\"https://coremicromanual.readthedocs.io/en/latest/\"><span style=\" text-decoration: underline; color:#0000ff;\">Read the Docs</span></a><br/>Visit blog at <a href=\"http://shawndriscoll.blogspot.com\"><span style=\" text-decoration: underline; color:#0000ff;\">shawndriscoll.blogspot.com</span></a><br/>For support, email <a href=\"mailto:shawndriscoll@hotmail.com?subject=Core Micro DieRoller 0.1.0 (Beta) for CORE Micro RPG\"><span style=\" text-decoration: underline; color:#0000ff;\">shawndriscoll@hotmail.com</span></a></p><p>Qt GUI Toolkit is copyright (C) 2020 The Qt Company Ltd</p><p><br/></p><p>The CORE Micro RPG was written by Tod Foley. Copyright 2022, As If Productions.</p></body></html>"))
+        self.textLabel.setText(_translate("aboutDialog", "<html><head/><body><p><span style=\" font-weight:600;\">Die Roller for Windows 10</span></p><p>Version: CORE Micro RPG v3.0</p><p>Build: 0.1.0 (Beta)</p><p>Produced by Shawn Driscoll. Copyright (C) 2022.</p><p>Get the latest manual at <a href=\"https://www.drivethrurpg.com/product/323467/CORE-Micro\"><span style=\" text-decoration: underline; color:#0000ff;\">DriveThruRPG</span></a><br/><br/>Visit blog at <a href=\"http://shawndriscoll.blogspot.com\"><span style=\" text-decoration: underline; color:#0000ff;\">shawndriscoll.blogspot.com</span></a><br/>For support, email <a href=\"mailto:shawndriscoll@hotmail.com?subject=Core Micro DieRoller 0.1.0 (Beta) for CORE Micro RPG\"><span style=\" text-decoration: underline; color:#0000ff;\">shawndriscoll@hotmail.com</span></a></p><p>Qt GUI Toolkit is copyright (C) 2020 The Qt Company Ltd</p><p><br/></p><p>The CORE Micro RPG was written by Tod Foley. Copyright 2022, As If Productions.</p></body></html>"))
 import coremicro_rc
