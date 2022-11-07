@@ -77,6 +77,11 @@ Things To-Do
   Just a mere thought.
 
 
+The CORE Micro Edition RPG was written by Tod Foley.
+Copyright 2022, As If Productions.
+https://www.drivethrurpg.com/product/323467/CORE-Micro
+
+
 Contact
 -------
 Questions? Please contact shawndriscoll@hotmail.com
