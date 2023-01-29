@@ -14,31 +14,22 @@ Notes
 **CORE Micro Dieroller** is being tested on Windows 10.
 
 
-What's New in 0.1.0?
---------------------
-
-**Pushing It** causes harm.
-
-
 Requirements
 ------------
 
 * **Windows 10**
 
-* **Python 3.9**
+  This code has not been tested with Windows 11.
+
+* **Python 3.11**
    
   **CORE Micro Dieroller** was written using the C implementation of Python
-  version 3.9. Also known as CPython.
+  version 3.11. Also known as CPython.
    
-* **PyQt5 5.15.4**
+* **PyQt5 5.15.7**
 
   PyQt5 is the framework used for displaying the Window GUI and buttons, etc.
-   
 
-Warning
--------
-
-**CORE Micro Dieroller** will not work with **Python 2.7-**.
 
 
 Not Using Python?
@@ -67,6 +58,14 @@ Things To-Do
 |se|
 
 **Known History**
+
+* v0.1.5b
+
+  Updated to Python 3.11.0.
+
+* v0.1.0b
+
+  **Pushing It** causes harm.
 
 * v0.0.1b
 

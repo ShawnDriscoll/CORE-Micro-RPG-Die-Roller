@@ -1,11 +1,11 @@
 #
-#   CORE Micro DieRoller 0.1.0 Beta
-#   Written for Python 3.9
+#   CORE Micro DieRoller 0.1.5 Beta
+#   Written for Python 3.11.0
 #
 ###################################
 
 """
-CORE Micro DieRoller 0.1.0 Beta
+CORE Micro DieRoller 0.1.5 Beta
 -------------------------------
 
 This program rolls 6-sided dice and calculates their results.
@@ -28,9 +28,9 @@ import os
 import logging
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__app__ = 'CORE Micro DieRoller 0.1.0 Beta'
-__version__ = '0.1.0b'
-__py_version__ = '3.9.13'
+__app__ = 'CORE Micro DieRoller 0.1.5 Beta'
+__version__ = '0.1.5b'
+__py_version__ = '3.11.0'
 __expired_tag__ = False
 
 #form_class = uic.loadUiType("mainwindow.ui")[0]
@@ -633,7 +633,7 @@ if __name__ == '__main__':
     
     if len(sys.argv) < 2:
 
-        if trange[0] > 2022 or trange[1] > 11:
+        if trange[0] > 2023 or trange[1] > 4:
             __expired_tag__ = True
             __app__ += ' [EXPIRED]'
 
@@ -675,7 +675,7 @@ if __name__ == '__main__':
 
         app.exec_()
     
-    elif trange[0] > 2022 or trange[1] > 11:
+    elif trange[0] > 2023 or trange[1] > 4:
         __app__ += ' [EXPIRED]'
         '''
         Beta for this app has expired!
