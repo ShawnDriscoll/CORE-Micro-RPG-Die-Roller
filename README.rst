@@ -11,7 +11,7 @@
 Notes
 -----
 
-**CORE Micro Dieroller** is being tested on Windows 10.
+**CORE Micro Dieroller** is being tested on Windows 11.
 
 
 Requirements
@@ -19,14 +19,14 @@ Requirements
 
 * **Windows 10**
 
-  This code has not been tested with Windows 11.
+  This code has been tested with Windows 10.
 
 * **Python 3.11**
    
   **CORE Micro Dieroller** was written using the C implementation of Python
   version 3.11. Also known as CPython.
    
-* **PyQt5 5.15.7**
+* **PyQt5 5.15.9**
 
   PyQt5 is the framework used for displaying the Window GUI and buttons, etc.
 
@@ -35,7 +35,7 @@ Requirements
 Not Using Python?
 -----------------
 
-You can always run the .EXE version for Windows 10 if you don't have the Python language installed.
+You can always run the .EXE version for Windows 10/11 if you don't have the Python language installed.
 
 
 .. |ss| raw:: html
@@ -61,7 +61,7 @@ Things To-Do
 
 * v0.1.5b
 
-  Updated to Python 3.11.0.
+  Updated to Python 3.11.6.
 
 * v0.1.0b
 

@@ -1,6 +1,6 @@
 #
 #   CORE Micro DieRoller 0.1.5 Beta
-#   Written for Python 3.11.0
+#   Written for Python 3.11.6
 #
 ###################################
 
@@ -30,7 +30,7 @@ import logging
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
 __app__ = 'CORE Micro DieRoller 0.1.5 Beta'
 __version__ = '0.1.5b'
-__py_version__ = '3.11.0'
+__py_version__ = '3.11.6'
 __expired_tag__ = False
 
 #form_class = uic.loadUiType("mainwindow.ui")[0]
@@ -633,7 +633,7 @@ if __name__ == '__main__':
     
     if len(sys.argv) < 2:
 
-        if trange[0] > 2023 or trange[1] > 4:
+        if trange[0] > 2024 or trange[1] > 12:
             __expired_tag__ = True
             __app__ += ' [EXPIRED]'
 
@@ -675,7 +675,7 @@ if __name__ == '__main__':
 
         app.exec_()
     
-    elif trange[0] > 2023 or trange[1] > 4:
+    elif trange[0] > 2024 or trange[1] > 12:
         __app__ += ' [EXPIRED]'
         '''
         Beta for this app has expired!
