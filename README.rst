@@ -17,7 +17,7 @@ Notes
 Requirements
 ------------
 
-* **Windows 10**
+* **Windows 11**
 
   This code has been tested with Windows 10.
 
@@ -32,32 +32,15 @@ Requirements
 
 
 
-Not Using Python?
------------------
-
-You can always run the .EXE version for Windows 10/11 if you don't have the Python language installed.
-
-
-.. |ss| raw:: html
-
-    <strike>
-
-.. |se| raw:: html
-
-    </strike>
-
 Things To-Do
 ------------
 
 | Add more dice roll types.
 | Cheat codes.
-|ss|
 
-| Start on a To-Do.
 
-|se|
-
-**Known History**
+Known History
+-------------
 
 * v0.1.5b
 
